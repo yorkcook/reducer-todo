@@ -1,9 +1,11 @@
 import React from "react";
 
 const Task = props => {
+  console.log(props);
   return (
     <div>
-      <p>{props.task.item}</p>
+      <p>{props.todo.item}</p>
+      {/* <p>{props.todo.task}</p> */}
     </div>
   );
 };
