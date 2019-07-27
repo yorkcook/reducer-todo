@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
 
 import "./App.css";
 
@@ -13,7 +14,7 @@ import {
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, intialState);
-  console.log(intialState);
+  //console.log(intialState);
 
   const addTodo = todo => {
     dispatch({ type: ADD_TODO, payload: todo });
@@ -24,14 +25,18 @@ const App = () => {
   };
 
   const clearTodo = e => {
-    e.preventDefault();
     dispatch({ type: CLEAR_TODO });
   };
 
   return (
     <div className="App">
       <h1>ToDo</h1>
-      <TodoList tasks={state.todos} toggleTodo={toggleTodo} />
+      <TodoList
+        tasks={state.todos}
+        toggleTodo={toggleTodo}
+        clearTodo={clearTodo}
+      />
+      <TodoForm addTodo={addTodo} clearTodo={clearTodo} />
     </div>
   );
 };
